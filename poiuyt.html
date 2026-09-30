@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aswin | AI Student Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 28px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #111827, #1e3a5f);
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .profile-circle {
+            width: 125px;
+            height: 125px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: #38bdf8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 45px;
+            font-weight: bold;
+            color: #111827;
+            border: 5px solid white;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: #38bdf8;
+        }
+
+        .hero h2 {
+            font-size: 22px;
+            font-weight: normal;
+            color: #dbeafe;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #d1d5db;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: #38bdf8;
+            color: #111827;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 75px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #111827;
+            margin-bottom: 10px;
+        }
+
+        .section-title .line {
+            width: 60px;
+            height: 4px;
+            background: #38bdf8;
+            margin: auto;
+            border-radius: 5px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .about-card p {
+            font-size: 17px;
+            color: #555;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .details {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .detail-box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .detail-box h3 {
+            color: #111827;
+            margin-bottom: 5px;
+        }
+
+        .detail-box p {
+            color: #555;
+        }
+
+        .education-container {
+            display: grid;
+            gap: 20px;
+        }
+
+        .education-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+            border-left: 5px solid #38bdf8;
+        }
+
+        .education-card h3 {
+            color: #111827;
+            margin-bottom: 7px;
+        }
+
+        .education-card p {
+            color: #555;
+        }
+
+        .year {
+            display: inline-block;
+            margin-top: 10px;
+            background: #e0f2fe;
+            color: #0369a1;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .skill-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .skill-card h3 {
+            color: #111827;
+        }
+
+        .hobbies-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .hobby {
+            background: white;
+            padding: 20px 30px;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            color: #374151;
+            font-weight: bold;
+        }
+
+        .contact-box {
+            background: #111827;
+            color: white;
+            max-width: 700px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            margin: 15px 0;
+            font-size: 17px;
+        }
+
+        .contact-item a {
+            color: #38bdf8;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        footer {
+            background: #0b1120;
+            color: #9ca3af;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer strong {
+            color: #38bdf8;
+        }
+
+        @media (max-width: 800px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero h2 {
+                font-size: 18px;
+            }
+
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 55px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">ASWIN</div>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#hobbies">Hobbies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+
+            <div class="profile-circle">A</div>
+
+            <h1>Hello, I'm <span>Aswin</span></h1>
+
+            <h2>BCA - Artificial Intelligence Student</h2>
+
+            <p>
+                Welcome to my personal portfolio. I am passionate about
+                technology, artificial intelligence, web development and
+                creating innovative digital solutions.
+            </p>
+
+            <a href="#about" class="btn">Explore My Portfolio</a>
+
+        </div>
+    </section>
+
+    <section id="about">
+
+        <div class="section-title">
+            <h2>About Me</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="about-card">
+
+            <p>
+                I am <strong>Aswin</strong>, a BCA student specializing in
+                Artificial Intelligence at Joy University. I am interested
+                in programming, web development, UI/UX design and
+                artificial intelligence. I enjoy learning new technologies
+                and improving my technical skills.
+            </p>
+
+            <div class="details">
+
+                <div class="detail-box">
+                    <h3>Name</h3>
+                    <p>Aswin</p>
+                </div>
+
+                <div class="detail-box">
+                    <h3>Course</h3>
+                    <p>BCA - Artificial Intelligence</p>
+                </div>
+
+                <div class="detail-box">
+                    <h3>College</h3>
+                    <p>Joy University</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="education">
+
+        <div class="section-title">
+            <h2>Educational Qualifications</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="education-container">
+
+            <div class="education-card">
+                <h3>School Education</h3>
+                <p><strong>Institution:</strong> GHSS, Thovalai</p>
+                <span class="year">2025</span>
+            </div>
+
+            <div class="education-card">
+                <h3>BCA - Artificial Intelligence</h3>
+                <p><strong>Institution:</strong> Joy University</p>
+                <span class="year">2025 - Present</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="skills">
+
+        <div class="section-title">
+            <h2>My Skills</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="skills-container">
+
+            <div class="skill-card">
+                <div class="skill-icon">🌐</div>
+                <h3>HTML & CSS</h3>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🐍</div>
+                <h3>Python</h3>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">☕</div>
+                <h3>Java</h3>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🎨</div>
+                <h3>UI/UX Design</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="hobbies">
+
+        <div class="section-title">
+            <h2>My Hobbies</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="hobbies-container">
+
+            <div class="hobby">🎬 Watching Movies</div>
+            <div class="hobby">🎮 Playing Games</div>
+            <div class="hobby">✈️ Traveling</div>
+
+        </div>
+
+    </section>
+
+    <section id="contact">
+
+        <div class="section-title">
+            <h2>Connect With Me</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="contact-box">
+
+            <h3>Let's Connect</h3>
+
+            <div class="contact-item">
+                📱 <strong>Phone:</strong>
+                <a href="tel:9488169147">9488169147</a>
+            </div>
+
+            <div class="contact-item">
+                📧 <a href="mailto:yourmail@example.com">Email Me</a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>
+            © 2026 <strong>Aswin</strong>. All Rights Reserved.
+        </p>
+
+        <p>
+            BCA - Artificial Intelligence | Joy University
+        </p>
+    </footer>
+
+</body>
+
+</html>
+```
